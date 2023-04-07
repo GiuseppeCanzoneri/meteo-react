@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 
-function SearchCity() {
+const SearchCity = () => {
   const [city, setCity] = useState("");
   const dispatch = useDispatch();
 
@@ -31,6 +31,6 @@ function SearchCity() {
       </Button>
     </Form>
   );
-}
+};
 
 export default SearchCity;

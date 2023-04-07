@@ -26,7 +26,12 @@ const WeatherInfo = () => {
                   <Card.Title>{weather.name} </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">{weather.weather[0].main}</Card.Subtitle>
                   <Card.Text>{weather.weather[0].description}</Card.Text>
-
+                  <hr />
+                  <Card.Text>Temperatura minima: {weather.main.temp_min}°</Card.Text>
+                  <hr />
+                  <Card.Text>Temperatura massima: {weather.main.temp_max}°</Card.Text>
+                  <hr />
+                  <Card.Text>Pressure: {weather.main.pressure}</Card.Text>
                   <Button
                     onClick={() => {
                       dispatch({
