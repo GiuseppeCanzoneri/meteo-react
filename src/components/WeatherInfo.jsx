@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 const WeatherInfo = () => {
   const dispatch = useDispatch();
+  const [hovered, setHovered] = useState(false);
+
   const weather = useSelector(state => {
     return state.weather;
   });
@@ -23,8 +26,8 @@ const WeatherInfo = () => {
                     src="https://images.unsplash.com/photo-1454789476662-53eb23ba5907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=452&q=80"
                     style={{ height: 300 }}
                   />
-                  <Card.Title>{weather.name} </Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">{weather.weather[0].main}</Card.Subtitle>
+                  <Card.Title className="text-center">{weather.name} </Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted text-center">{weather.weather[0].main}</Card.Subtitle>
                   <Card.Text>{weather.weather[0].description}</Card.Text>
                   <hr />
                   <Card.Text>Temperatura minima: {weather.main.temp_min}°</Card.Text>
@@ -33,18 +36,24 @@ const WeatherInfo = () => {
                   <hr />
                   <Card.Text>Pressure: {weather.main.pressure}</Card.Text>
                   <Button
+                    style={{
+                      display: "block",
+                      margin: "0 auto",
+                      backgroundColor: hovered ? "green" : "blue", // Cambia il colore qui
+                      transition: "background-color 0.3s",
+                    }}
                     onClick={() => {
                       dispatch({
                         type: "STORE_CITY",
                         payload: weather,
                       });
                     }}
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
                   >
-                    ADD TO FAV
+                    Aggiungi ai Preferiti
                   </Button>
                 </Card.Body>
-                <Card.Link href="#">CITY</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
               </Card>
             </Col>
             <Col xs={4} md={4}></Col>

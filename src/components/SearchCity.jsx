@@ -21,10 +21,10 @@ const SearchCity = () => {
   };
 
   return (
-    <Form onSubmit={searchWeather}>
+    <Form onSubmit={searchWeather} className="text-center">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Control onChange={event => setCity(event.target.value)} type="text" placeholder="search for a city" />
-        <Form.Text className="text-muted">Check out the weather in a city</Form.Text>
+        <Form.Text className="text-muted ">Check out the weather in a city</Form.Text>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit

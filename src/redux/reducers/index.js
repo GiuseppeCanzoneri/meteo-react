@@ -15,6 +15,11 @@ const mainReducer = (state = initialState, action) => {
         weather: state.weather,
         favourites: [action.payload, ...state.favourites],
       };
+    case "REMOVE_CITY":
+      return {
+        ...state,
+        favourites: state.favourites.filter(city => city.id !== action.payload),
+      };
     default:
       return state;
   }
